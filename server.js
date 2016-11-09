@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var CONTACTS_COLLECTION = "contacts";
+var CONTACTS_COLLECTION = "TopGainersNasdaq";
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -38,6 +38,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
+  alert('errors');
 }
 
 /*  "/contacts"
@@ -49,6 +50,7 @@ app.get("/contacts", function(req, res) {
   db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
+	  alert('failed to get contacts');
     } else {
       res.status(200).json(docs);  
     }
