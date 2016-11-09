@@ -1,13 +1,5 @@
-var Logger = require('le_node');
-var log = new Logger({
-  token:'b5276319-b0aa-470e-ad85-0f1455964816'
-});
 
-// level specific methods like 'info', 'debug', etc.
-log.info("I'm a Lumberjack and I'm OK")
 
-// generic log method, also accepts JSON entries
-log.log("debug", {sleep:"all night", work:"all day"})
 
 
 var express = require("express");
@@ -45,6 +37,12 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 // CONTACTS API ROUTES BELOW
+
+var Logger = require('le_node');
+var log = new Logger({
+  token:'b5276319-b0aa-470e-ad85-0f1455964816'
+});
+
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
