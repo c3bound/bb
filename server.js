@@ -59,6 +59,7 @@ app.get("/contacts", function(req, res) {
       handleError(res, err.message, "Failed to get contacts.");
 	  alert('failed to get contacts');
     } else {
+		alert('got contacts');
       res.status(200).json(docs);  
     }
   });
