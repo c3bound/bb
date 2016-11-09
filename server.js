@@ -1,3 +1,15 @@
+var Logger = require('le_node');
+var log = new Logger({
+  token:'b5276319-b0aa-470e-ad85-0f1455964816'
+});
+
+// level specific methods like 'info', 'debug', etc.
+log.info("I'm a Lumberjack and I'm OK")
+
+// generic log method, also accepts JSON entries
+log.log("debug", {sleep:"all night", work:"all day"})
+
+
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
@@ -18,7 +30,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
-	alert('broken');
+	
   }
 
   // Save database object from the callback for reuse.
@@ -38,7 +50,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
-  alert('errors');
+  
 }
 
 /*  "/contacts"
